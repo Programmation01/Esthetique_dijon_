@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du produit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Playfair Display', serif; margin: 0; padding: 0; background-color: #fff; color: #333; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid #ddd; position: relative; z-index: 1000; }
+        .logo { font-size: 2em; font-weight: 700; }
+        .menu-icon { cursor: pointer; display: block; width: 30px; height: 20px; position: relative; top: 5px; }
+        .menu-icon .bar { width: 100%; height: 3px; background-color: #000; margin: 5px 0; transition: 0.4s; }
+        .nav-menu { position: absolute; top: 100%; right: 0; width: 100%; background-color: #fff; border: 1px solid #000; border-top: none; display: none; box-sizing: border-box; }
+        .nav-menu.open { display: block; }
+        .nav-menu ul { list-style: none; padding: 0; margin: 0; }
+        .nav-menu li { border-bottom: 1px solid #000; }
+        .nav-menu li:last-child { border-bottom: none; }
+        .nav-menu a { display: block; padding: 15px 20px; text-decoration: none; color: #000; text-align: center; font-size: 1.2em; font-weight: 400; }
+        .nav-menu a.active, .nav-menu a:hover { background-color: #f0f0f0; }
+        main { padding: 20px 5%; max-width: 600px; margin: auto; }
+        .product-details { text-align: center; }
+        .product-details img { width: 100%; max-width: 400px; height: auto; border: 1px solid #ddd; margin-bottom: 20px; }
+        .product-details h1 { font-size: 2em; margin-bottom: 10px; }
+        .product-details h2 { font-size: 1.5em; margin-bottom: 20px; }
+        .product-details p { margin-bottom: 15px; }
+        .product-options { margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px; }
+        .product-options h3 { font-size: 1.2em; text-align: center; }
+        .options-form { display: flex; flex-direction: column; align-items: center; }
+        .option-group { margin-bottom: 15px; width: 100%; }
+        .option-group label { display: block; font-weight: 700; margin-bottom: 5px; }
+        .option-group select, .option-group input[type="number"] { width: 100%; padding: 10px; border: 1px solid #ccc; font-family: 'Playfair Display', serif; }
+        .buy-now-button { display: inline-block; padding: 15px 30px; border: 2px solid #000; text-decoration: none; color: #000; font-size: 1.1em; border-radius: 30px; margin-top: 20px; }
+        .footer { background-color: #000; color: #fff; padding: 20px 5%; text-align: center; }
+        .footer-content p { margin: 5px 0; font-size: 0.8em; }
+        .footer a { color: #fff; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (min-width: 768px) {
+            .menu-icon { display: none; }
+            .nav-menu { position: static; display: block; width: auto; border: none; background-color: transparent; }
+            .nav-menu ul { display: flex; justify-content: flex-end; }
+            .nav-menu li { border-bottom: none; }
+            .nav-menu a { padding: 10px 15px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">MARQUE</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="accueil.html">ACCUEILLE</a></li>
+                <li><a href="galerie.html">GALERIE</a></li>
+                <li><a href="presentation.html">PRÉSENTATION DE L'ÉQUIPE</a></li>
+                <li><a href="engagements.html">ENGAGEMENTS</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="boutique.html" class="active">BOUTIQUE</a></li>
+                <li><a href="realisations.html">RÉALISATIONS</a></li>
+                <li><a href="avis.html">AVIS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="product-details">
+            <img id="product-image" src="" alt="Image du produit">
+            <h1 id="product-name"></h1>
+            <p id="product-description"></p>
+            <h2 id="product-price"></h2>
+            
+            <div class="product-options">
+                <form class="options-form">
+                    <div class="option-group" id="color-options">
+                        <label for="color-select">Couleur :</label>
+                        <select id="color-select">
+                            </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="quantity-input">Quantité :</label>
+                        <input type="number" id="quantity-input" name="quantity" value="1" min="1">
+                    </div>
+                    <a id="buy-now-button" href="https://www.stripe.com" class="buy-now-button">Acheter maintenant</a>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content"><p>TOUS DROIT RÉSERVÉ ©</p><p><a href="MP.txt">Mentions légales & Politique de confidentialité</a></p></div>
+    </footer>
+    <script>
+        function toggleMenu() { const menu = document.getElementById('nav-menu'); menu.classList.toggle('open'); }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            
+            const productName = document.getElementById('product-name');
+            const productDescription = document.getElementById('product-description');
+            const productPrice = document.getElementById('product-price');
+            const productImage = document.getElementById('product-image');
+            const colorOptionsDiv = document.getElementById('color-options');
+            const colorSelect = document.getElementById('color-select');
+            const buyNowButton = document.getElementById('buy-now-button');
+
+            productName.textContent = params.get('nom');
+            document.title = "Détails de " + params.get('nom');
+            productDescription.textContent = params.get('description');
+            productPrice.textContent = "Prix : " + params.get('prix') + "€";
+            productImage.src = params.get('image');
+
+            // Récupérer et définir le lien de paiement du bouton
+            const paymentLink = params.get('paiement');
+            if (paymentLink) {
+                buyNowButton.href = paymentLink;
+            }
+
+            // Gérer les options de couleur
+            const couleurs = params.get('couleurs');
+            if (couleurs && couleurs !== 'N/A') {
+                colorOptionsDiv.style.display = 'block';
+                const couleursArray = couleurs.split(',');
+                couleursArray.forEach(couleur => {
+                    const option = document.createElement('option');
+                    option.value = couleur;
+                    option.textContent = couleur;
+                    colorSelect.appendChild(option);
+                });
+            } else {
+                colorOptionsDiv.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

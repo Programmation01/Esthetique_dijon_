@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARQUE - Réalisations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Playfair Display', serif; margin: 0; padding: 0; background-color: #fff; color: #333; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid #ddd; position: relative; z-index: 1000; }
+        .logo { font-size: 2em; font-weight: 700; }
+        .menu-icon { cursor: pointer; display: block; width: 30px; height: 20px; position: relative; top: 5px; }
+        .menu-icon .bar { width: 100%; height: 3px; background-color: #000; margin: 5px 0; transition: 0.4s; }
+        .nav-menu { position: absolute; top: 100%; right: 0; width: 100%; background-color: #fff; border: 1px solid #000; border-top: none; display: none; box-sizing: border-box; }
+        .nav-menu.open { display: block; }
+        .nav-menu ul { list-style: none; padding: 0; margin: 0; }
+        .nav-menu li { border-bottom: 1px solid #000; }
+        .nav-menu li:last-child { border-bottom: none; }
+        .nav-menu a { display: block; padding: 15px 20px; text-decoration: none; color: #000; text-align: center; font-size: 1.2em; font-weight: 400; }
+        .nav-menu a.active, .nav-menu a:hover { background-color: #f0f0f0; }
+        main { padding: 20px 5%; }
+        .page-title { font-size: 1.5em; text-align: center; margin: 20px 0; }
+        .realisation-item { border: 1px solid #000; padding: 10px; margin-bottom: 20px; }
+        .realisation-item img { width: 100%; height: auto; display: block; }
+        .realisation-item .title { position: absolute; bottom: 20px; left: 20px; color: #000; background-color: rgba(255, 255, 255, 0.7); padding: 5px 10px; font-weight: 700; }
+        .realisation-item .image-container { position: relative; }
+        .footer { background-color: #000; color: #fff; padding: 20px 5%; text-align: center; }
+        .footer-content p { margin: 5px 0; font-size: 0.8em; }
+        .footer a { color: #fff; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (min-width: 768px) {
+            .menu-icon { display: none; }
+            .nav-menu { position: static; display: block; width: auto; border: none; background-color: transparent; }
+            .nav-menu ul { display: flex; justify-content: flex-end; }
+            .nav-menu li { border-bottom: none; }
+            .nav-menu a { padding: 10px 15px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">MARQUE</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="accueil.html">ACCUEILLE</a></li>
+                <li><a href="galerie.html">GALERIE</a></li>
+                <li><a href="presentation.html">PRÉSENTATION DE L'ÉQUIPE</a></li>
+                <li><a href="engagements.html">ENGAGEMENTS</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="realisations.html" class="active">RÉALISATIONS</a></li>
+                <li><a href="avis.html">AVIS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="page-title">Réalisations</h1>
+        <section class="realisation-item">
+            <div class="image-container">
+                <img src="Réalisations-1.png" alt="Réalisation 1">
+                <div class="title">Ongles en gels</div>
+            </div>
+        </section>
+        <section class="realisation-item">
+            <div class="image-container">
+                <img src="Réalisations-2.png" alt="Réalisation 2">
+                <div class="title">Nude Élégance</div>
+            </div>
+        </section>
+        <section class="realisation-item">
+            <div class="image-container">
+                <img src="Réalisations-3.png" alt="Réalisation 3">
+                <div class="title">French Lavande Printanière</div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content"><p>TOUS DROIT RÉSERVÉ ©</p><p><a href="MP.txt">Mentions légales & Politique de confidentialité</a></p></div>
+    </footer>
+    <script>
+        function toggleMenu() { const menu = document.getElementById('nav-menu'); menu.classList.toggle('open'); }
+    </script>
+</body>
+</html>

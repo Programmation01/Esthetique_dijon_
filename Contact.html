@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARQUE - Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAo9T/6t76M75u8f+z7F7F6E7u8x4I5S2wzD5s5c=" crossorigin=""/>
+    <style>
+        body { font-family: 'Playfair Display', serif; margin: 0; padding: 0; background-color: #fff; color: #333; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid #ddd; position: relative; z-index: 1000; }
+        .logo { font-size: 2em; font-weight: 700; }
+        .menu-icon { cursor: pointer; display: block; width: 30px; height: 20px; position: relative; top: 5px; }
+        .menu-icon .bar { width: 100%; height: 3px; background-color: #000; margin: 5px 0; transition: 0.4s; }
+        .nav-menu { position: absolute; top: 100%; right: 0; width: 100%; background-color: #fff; border: 1px solid #000; border-top: none; display: none; box-sizing: border-box; }
+        .nav-menu.open { display: block; }
+        .nav-menu ul { list-style: none; padding: 0; margin: 0; }
+        .nav-menu li { border-bottom: 1px solid #000; }
+        .nav-menu li:last-child { border-bottom: none; }
+        .nav-menu a { display: block; padding: 15px 20px; text-decoration: none; color: #000; text-align: center; font-size: 1.2em; font-weight: 400; }
+        .nav-menu a.active, .nav-menu a:hover { background-color: #f0f0f0; }
+        main { padding: 20px 5%; }
+        .page-title { font-size: 1.5em; text-align: center; margin: 20px 0; }
+        .contact-info { display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; max-width: 400px; margin: 0 auto 30px; font-size: 1.1em; }
+        .contact-info span:nth-child(odd) { font-weight: 700; }
+        .contact-info a { color: #333; text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+        #map { height: 400px; width: 100%; max-width: 800px; margin: 0 auto 30px; border: 1px solid #000; }
+        .opening-hours h2 { text-align: center; margin-bottom: 20px; }
+        .opening-hours-table { width: 100%; max-width: 500px; margin: 0 auto; border-collapse: collapse; text-align: left; }
+        .opening-hours-table th, .opening-hours-table td { padding: 8px; border-bottom: 1px solid #ccc; }
+        .opening-hours-table th { font-weight: 700; }
+        .footer { background-color: #000; color: #fff; padding: 20px 5%; text-align: center; }
+        .footer-content p { margin: 5px 0; font-size: 0.8em; }
+        .footer a { color: #fff; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (min-width: 768px) {
+            .menu-icon { display: none; }
+            .nav-menu { position: static; display: block; width: auto; border: none; background-color: transparent; }
+            .nav-menu ul { display: flex; justify-content: flex-end; }
+            .nav-menu li { border-bottom: none; }
+            .nav-menu a { padding: 10px 15px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">MARQUE</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="accueil.html">ACCUEILLE</a></li>
+                <li><a href="galerie.html">GALERIE</a></li>
+                <li><a href="presentation.html">PRÉSENTATION DE L'ÉQUIPE</a></li>
+                <li><a href="engagements.html">ENGAGEMENTS</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="realisations.html">RÉALISATIONS</a></li>
+                <li><a href="avis.html">AVIS</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="page-title">Contact</h1>
+        <section class="contact-info">
+            <span>Adresse :</span><span><a href="https://maps.google.com/?q=66 Rue du Faubourg Saint-Martin, 21121 Fontaine-lès-Dijon" target="_blank">66 Rue du Faubourg Saint-Martin, 21121 Fontaine-lès-Dijon</a></span>
+            <span>Téléphone :</span><span><a href="tel:+33767679401">07 67 67 94 01</a></span>
+            <span>Email :</span><span><a href="mailto:Esthetique.dijon@gmail.com">Esthetique.dijon@gmail.com</a></span>
+            <span>Instagram :</span><span><a href="https://www.instagram.com/Esthetique_dijon" target="_blank">@Esthetique_dijon</a></span>
+        </section>
+        <section id="map"></section>
+        <section class="opening-hours">
+            <h2>Horaires d'ouverture</h2>
+            <table class="opening-hours-table">
+                <thead><tr><th></th><th>Matin</th><th>Après-midi</th></tr></thead>
+                <tbody>
+                    <tr><td>Lundi :</td><td>9h00 - 12h00</td><td>14h00 - 17h30</td></tr>
+                    <tr><td>Mardi :</td><td>9h00 - 12h00</td><td>14h00 - 17h30</td></tr>
+                    <tr><td>Mercredi :</td><td>Fermé</td><td>14h00 - 17h30</td></tr>
+                    <tr><td>Jeudi :</td><td>9h00 - 12h00</td><td>14h00 - 17h30</td></tr>
+                    <tr><td>Vendredi :</td><td>9h00 - 12h00</td><td>14h00 - 17h30</td></tr>
+                    <tr><td>Samedi :</td><td>10h00 - 12h00</td><td>14h00 - 17h30</td></tr>
+                    <tr><td>Dimanche :</td><td>Fermé</td><td>Fermé</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content"><p>TOUS DROIT RÉSERVÉ ©</p><p><a href="MP.txt">Mentions légales & Politique de confidentialité</a></p></div>
+    </footer>
+    <script src="https://cartes.app/?allez=66+Faubourg+Coiffures%7Cn5741808016%7C5.0292%7C47.3416"></script>

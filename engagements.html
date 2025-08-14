@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARQUE - Engagements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Playfair Display', serif; margin: 0; padding: 0; background-color: #fff; color: #333; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid #ddd; position: relative; z-index: 1000; }
+        .logo { font-size: 2em; font-weight: 700; }
+        .menu-icon { cursor: pointer; display: block; width: 30px; height: 20px; position: relative; top: 5px; }
+        .menu-icon .bar { width: 100%; height: 3px; background-color: #000; margin: 5px 0; transition: 0.4s; }
+        .nav-menu { position: absolute; top: 100%; right: 0; width: 100%; background-color: #fff; border: 1px solid #000; border-top: none; display: none; box-sizing: border-box; }
+        .nav-menu.open { display: block; }
+        .nav-menu ul { list-style: none; padding: 0; margin: 0; }
+        .nav-menu li { border-bottom: 1px solid #000; }
+        .nav-menu li:last-child { border-bottom: none; }
+        .nav-menu a { display: block; padding: 15px 20px; text-decoration: none; color: #000; text-align: center; font-size: 1.2em; font-weight: 400; }
+        .nav-menu a.active, .nav-menu a:hover { background-color: #f0f0f0; }
+        main { padding: 20px 5%; }
+        .page-title { font-size: 1.5em; text-align: center; margin: 20px 0; }
+        .section-text { text-align: center; margin: 40px 0; }
+        .title-with-line { font-size: 1.2em; font-weight: 700; position: relative; display: inline-block; padding: 0 10px; }
+        .title-with-line::before, .title-with-line::after { content: ''; position: absolute; top: 50%; width: 100px; height: 1px; background-color: #000; }
+        .title-with-line::before { left: -110px; }
+        .title-with-line::after { right: -110px; }
+        .image-container { width: 100%; overflow: hidden; margin-bottom: 20px; }
+        .image-container img { width: 100%; height: auto; display: block; }
+        .labels-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; justify-content: center; max-width: 400px; margin: 20px auto; }
+        .Sponsors-item { text-align: center; }
+        .Sponsors-item img { width: 100%; height: auto; border: 1px solid #000; padding: 5px; box-sizing: border-box; }
+        .footer { background-color: #000; color: #fff; padding: 20px 5%; text-align: center; }
+        .footer-content p { margin: 5px 0; font-size: 0.8em; }
+        .footer a { color: #fff; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (min-width: 768px) {
+            .menu-icon { display: none; }
+            .nav-menu { position: static; display: block; width: auto; border: none; background-color: transparent; }
+            .nav-menu ul { display: flex; justify-content: flex-end; }
+            .nav-menu li { border-bottom: none; }
+            .nav-menu a { padding: 10px 15px; font-size: 1em; }
+            .labels-grid { grid-template-columns: repeat(4, 1fr); max-width: 600px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">MARQUE</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="accueil.html">ACCUEILLE</a></li>
+                <li><a href="galerie.html">GALERIE</a></li>
+                <li><a href="presentation.html">PRÉSENTATION DE L'ÉQUIPE</a></li>
+                <li><a href="engagements.html" class="active">ENGAGEMENTS</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="realisations.html">RÉALISATIONS</a></li>
+                <li><a href="avis.html">AVIS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="page-title">Engagements</h1>
+        <div class="image-container"><img src="Engagements.png" alt="Image de l'institut"></div>
+        <section class="section-text">
+            <h2>Hygiene :</h2><p>Votre sécurité et votre bien-être sont notre priorité. Tout le matériel est soigneusement désinfecté et stérilisé après chaque utilisation. Nous utilisons des produits de qualité professionnelle, respectueux de vos ongles et de votre peau. Chaque poste de travail est nettoyé entre deux clientes afin de garantir un environnement sain et irréprochable.</p>
+        </section>
+        <hr>
+        <section class="section-text">
+            <h2>Qualité :</h2><p>Chez Esthétique Dijon, nous plaçons la qualité au cœur de notre métier. Chaque prestation est réalisée avec soin, précision et créativité, en utilisant des produits haut de gamme pour sublimer vos ongles tout en respectant leur santé. Notre objectif : vous offrir un résultat impeccable, durable et parfaitement adapté à vos envies.</p>
+        </section>
+        <hr>
+        <section class="section-text">
+            <h2>Produit utilisés :</h2><p>Nous sélectionnons avec soin des produits professionnels de haute qualité, respectueux de vos ongles et de votre peau. Chaque marque et chaque matière sont choisies pour leur efficacité, leur sécurité et leur durabilité, afin de vous garantir un résultat impeccable à chaque visite.</p>
+        </section>
+        <hr>
+        <section class="section-text">
+            <h2>Nos Partenaires</h2>
+            <div class="labels-grid">
+                <div class="Sponsors-item"><img src="Sponsor-1.png" alt="Partenaire 1"></div>
+                <div class="Sponsors-item"><img src="Sponsor-2.png" alt="Partenaire 2"></div>
+                <div class="Sponsors-item"><img src="Sponsor-3.png" alt="Partenaire 3"></div>
+                <div class="Sponsors-item"><img src="Sponsor-4.png" alt="Partenaire 4"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content"><p>TOUS DROIT RÉSERVÉ ©</p><p><a href="MP.txt">Mentions légales & Politique de confidentialité</a></p></div>
+    </footer>
+    <script>
+        function toggleMenu() { const menu = document.getElementById('nav-menu'); menu.classList.toggle('open'); }
+    </script>
+</body>
+</html>
